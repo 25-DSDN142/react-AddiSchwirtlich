@@ -19,7 +19,7 @@ function drawInteraction(faces, hands) {
     This includes how to draw a box around the face, and an oval. 
     It also knows where the key points of the following parts are:
      face.leftEye
-     face.leftEyebrow hi
+     face.leftEyebrow
      face.lips
      face.rightEye
      face.rightEyebrow
