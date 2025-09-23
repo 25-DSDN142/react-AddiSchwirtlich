@@ -65,16 +65,35 @@ function drawInteraction(faces, hands) {
     Start drawing on the face here
     */
     noStroke()
-    fill(225, 225, 0);
+    fill(255);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
 
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
 
-    drawPoints(face.leftEye);
-    drawPoints(face.leftEyebrow);
+    fill(0);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight);
+
+    fill(103, 20, 255,170);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight);
+
+    fill(255);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight/4);
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight/4);
+    //drawPoints(face.leftEye);
+    //drawPoints(face.leftEyebrow);
     drawPoints(face.lips);
-    drawPoints(face.rightEye);
-    drawPoints(face.rightEyebrow);
+    //drawPoints(face.rightEye);
+    //drawPoints(face.rightEyebrow);
+
+    fill(66, 46, 15);
+    ellipse(leftEyebrowCenterX,leftEyebrowCenterY,leftEyebrowWidth,leftEyebrowHeight);
+    ellipse(rightEyebrowCenterX,rightEyebrowCenterY,rightEyebrowWidth,rightEyebrowHeight);
+
+    fill(240, 168, 235);
+    ellipse(noseTipX,noseTipY,25,25);
 
     // drawX(rightEyeCenterX,rightEyeCenterY);
     // drawX(leftEyeCenterX,leftEyeCenterY);
