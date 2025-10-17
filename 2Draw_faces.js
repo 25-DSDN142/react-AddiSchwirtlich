@@ -65,7 +65,7 @@ function drawInteraction(faces, hands) {
     Start drawing on the face here
     */
     noStroke()
-    fill(255);
+    fill(0);
     // fill(get(leftEyeCenterX, leftEyeCenterY))
 
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
@@ -75,11 +75,11 @@ function drawInteraction(faces, hands) {
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight);
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight);
 
-    fill(103, 20, 255,170);
+    fill(0);
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight);
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight);
 
-    fill(255);
+    fill(0);
     ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight/4);
     ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight/4);
     //drawPoints(face.leftEye);
