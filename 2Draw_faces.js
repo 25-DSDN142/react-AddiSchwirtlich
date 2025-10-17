@@ -1,7 +1,15 @@
 // ----=  Faces  =----
+
+let leftBunnyEar;
+let rightBunnyEar;
+let Bunnynose;
+
 /* load images here */
 function prepareInteraction() {
   //bgImage = loadImage('/images/background.png');
+  leftBunnyEar = loadImage('/images/Left_Bunny_Ear.png');
+  rightBunnyEar = loadImage('/images/Right_Bunny_Ear.png');
+  Bunnynose = loadImage('/images/Bunny_Nose.png');
 }
 
 function drawInteraction(faces, hands) {
@@ -58,42 +66,50 @@ function drawInteraction(faces, hands) {
     let rightEyebrowCenterY = face.rightEyebrow.centerY;
     let rightEyebrowWidth = face.rightEyebrow.width;
     let rightEyebrowHeight = face.rightEyebrow.height;
-
+    
+    // nose
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
+
+    //bunny nose
+    let BunnynoseX = noseTipX;
+    let BunnynoseY = noseTipY;
+    let BunnynoseWidth = 5;
+    let BunnynoseHeight = 5;
+
+
     /*
     Start drawing on the face here
     */
-    noStroke()
-    fill(0);
+    noStroke();
     // fill(get(leftEyeCenterX, leftEyeCenterY))
-
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth, leftEyeHeight);
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth, rightEyeHeight);
-
     fill(0);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/2, leftEyeHeight);
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/2, rightEyeHeight);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth + 25, leftEyeHeight + 40); //  black outline for  eyes for whatever noStroke was applying to everything?
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth + 25, rightEyeHeight + 40);
 
+    fill(255);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth + 10, leftEyeHeight + 25); // white part on eyes
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth + 10, rightEyeHeight + 25);
+    
     fill(0);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight);
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight);
-
-    fill(0);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth/4, leftEyeHeight/4);
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth/4, rightEyeHeight/4);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth - 18, leftEyeHeight + 10); // iris of eyes
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth - 18, rightEyeHeight + 10);
+    
     //drawPoints(face.leftEye);
     //drawPoints(face.leftEyebrow);
     drawPoints(face.lips);
     //drawPoints(face.rightEye);
     //drawPoints(face.rightEyebrow);
 
+    image(Bunnynose,BunnynoseX,BunnynoseY,BunnynoseWidth,BunnynoseHeight);
+
+
+
     fill(66, 46, 15);
     ellipse(leftEyebrowCenterX,leftEyebrowCenterY,leftEyebrowWidth,leftEyebrowHeight);
     ellipse(rightEyebrowCenterX,rightEyebrowCenterY,rightEyebrowWidth,rightEyebrowHeight);
 
-    fill(240, 168, 235);
-    ellipse(noseTipX,noseTipY,25,25);
+
 
     // drawX(rightEyeCenterX,rightEyeCenterY);
     // drawX(leftEyeCenterX,leftEyeCenterY);
