@@ -25,6 +25,7 @@ function drawInteraction(faces, hands) {
       drawPoints(face)
     }
 
+    image(bgImage, 0, 0, width, height);
     /*
     Once this program has a face, it knows some things about it.
     This includes how to draw a box around the face, and an oval. 
