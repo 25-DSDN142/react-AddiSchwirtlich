@@ -3,6 +3,7 @@
 let leftBunnyEar;
 let rightBunnyEar;
 let Bunnynose;
+let BunnyBody;
 
 /* load images here */
 function prepareInteraction() {
@@ -10,6 +11,7 @@ function prepareInteraction() {
   leftBunnyEar = loadImage('/images/Left_Bunny_Ear.png');
   rightBunnyEar = loadImage('/images/Right_Bunny_Ear.png');
   Bunnynose = loadImage('/images/Bunny_Nose.png');
+  BunnyBody = loadImage('/images/Bunny_Body.png');
 }
 
 function drawInteraction(faces, hands) {
@@ -67,48 +69,102 @@ function drawInteraction(faces, hands) {
     let rightEyebrowWidth = face.rightEyebrow.width;
     let rightEyebrowHeight = face.rightEyebrow.height;
     
+    let BunnyfaceX = faceCenterX;
+    let BunnyfaceY = faceCenterY - 10;
+    let BunnyfaceWidth = faceWidth * 1.35;
+    let BunnyfaceHeight = faceheight * 1.2;
+
+    //let BunnyfaceYOffset = 25;
+
     // nose
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
 
-    //bunny nose
+    // bunny nose
     let BunnynoseX = noseTipX;
     let BunnynoseY = noseTipY;
-    let BunnynoseWidth = 5;
-    let BunnynoseHeight = 5;
+    let BunnynoseWidth = BunnyfaceWidth * 2.5; // helps with sizing when closer and further away
+    let BunnynoseHeight = BunnyfaceHeight * 2.2;
 
+    // offset for placement of bunny nose
+    let noseXOffset = BunnyfaceWidth * 1.33;
+    let noseYOffset = BunnyfaceHeight * 1.25;
+
+    let leftBunnyEyeWidth = faceWidth / 3;
+    let rightBunnyEyeWidth = faceWidth / 3;
+    let leftBunnyEyeHeight = leftEyeHeight * 4;
+    let rightBunnyEyeHeight = rightEyeHeight * 4;
+
+    let leftBunnyIrisWidth = leftEyeWidth * 1.1;
+    let leftBunnyIrisHeight = leftEyeHeight * 2.5;
+    let rightBunnyIrisWidth = rightEyeWidth * 1.1;
+    let rightBunnyIrisHeight = rightEyeHeight * 2.5;
+
+    let BunnyEarWidth = BunnyfaceWidth * 1.4;
+    let BunnyEarHeight = BunnyfaceHeight * 1.3;
+
+    let leftEarX = face.keypoints[67].x;
+    let leftEarY = face.keypoints[67].y;
+
+    let rightEarX = face.keypoints[297].x;
+    let rightEarY = face.keypoints[297].y;
+
+    let leftEarXOffset = faceWidth * 0.65;
+    let leftEarYOffset = faceheight * 1.1;
+
+    let rightEarXOffset = faceWidth * 1.15;
+    let rightEarYOffset = faceheight * 1.1;
+    
+    let SnoutX = face.keypoints[164].x;
+    let SnoutY = face.keypoints[164].y;
+
+    let ChinX = face.keypoints[152].x;
+    let ChinY = face.keypoints[152].y;
 
     /*
     Start drawing on the face here
     */
     noStroke();
     // fill(get(leftEyeCenterX, leftEyeCenterY))
-    fill(0);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth + 25, leftEyeHeight + 40); //  black outline for  eyes for whatever noStroke was applying to everything?
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth + 25, rightEyeHeight + 40);
+
+    image(leftBunnyEar, leftEarX - leftEarXOffset, leftEarY - leftEarYOffset, BunnyEarWidth, BunnyEarHeight);
+    image(rightBunnyEar, rightEarX - rightEarXOffset, rightEarY - rightEarYOffset, BunnyEarWidth, BunnyEarHeight);
 
     fill(255);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth + 10, leftEyeHeight + 25); // white part on eyes
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth + 10, rightEyeHeight + 25);
+    ellipse(BunnyfaceX,BunnyfaceY,BunnyfaceWidth,BunnyfaceHeight); // head of bunny
+
+
+    fill(0);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftBunnyEyeWidth * 1.15, leftBunnyEyeHeight * 1.15); //  black outline for  eyes for whatever noStroke was applying to everything?
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightBunnyEyeWidth * 1.15, rightBunnyEyeHeight * 1.15);
+
+    fill(255);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftBunnyEyeWidth, leftBunnyEyeHeight); // white part on eyes
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightBunnyEyeWidth, rightBunnyEyeHeight);
     
     fill(0);
-    ellipse(leftEyeCenterX, leftEyeCenterY, leftEyeWidth - 18, leftEyeHeight + 10); // iris of eyes
-    ellipse(rightEyeCenterX, rightEyeCenterY, rightEyeWidth - 18, rightEyeHeight + 10);
+    ellipse(leftEyeCenterX, leftEyeCenterY, leftBunnyIrisWidth, leftBunnyIrisHeight); // iris of eyes
+    ellipse(rightEyeCenterX, rightEyeCenterY, rightBunnyIrisWidth, rightBunnyIrisHeight);
     
     //drawPoints(face.leftEye);
     //drawPoints(face.leftEyebrow);
-    drawPoints(face.lips);
+    //drawPoints(face.lips);
     //drawPoints(face.rightEye);
     //drawPoints(face.rightEyebrow);
 
-    image(Bunnynose,BunnynoseX,BunnynoseY,BunnynoseWidth,BunnynoseHeight);
+    fill(0);
+    ellipse(lipsCenterX, lipsCenterY / 0.99, lipsWidth, lipsHeight);
 
+    fill(255);
+    ellipse(SnoutX, SnoutY, faceWidth / 1.8, faceheight / 2.8);
 
+    image(Bunnynose,BunnynoseX - noseXOffset,BunnynoseY - noseYOffset,BunnynoseWidth,BunnynoseHeight); // image load for bunny nose
 
-    fill(66, 46, 15);
-    ellipse(leftEyebrowCenterX,leftEyebrowCenterY,leftEyebrowWidth,leftEyebrowHeight);
-    ellipse(rightEyebrowCenterX,rightEyebrowCenterY,rightEyebrowWidth,rightEyebrowHeight);
+    image(BunnyBody, ChinX, ChinY, faceWidth, faceheight);
 
+    //fill(66, 46, 15);
+    //ellipse(leftEyebrowCenterX,leftEyebrowCenterY,leftEyebrowWidth,leftEyebrowHeight);
+    //ellipse(rightEyebrowCenterX,rightEyebrowCenterY,rightEyebrowWidth,rightEyebrowHeight);
 
 
     // drawX(rightEyeCenterX,rightEyeCenterY);
