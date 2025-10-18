@@ -4,10 +4,11 @@ let leftBunnyEar;
 let rightBunnyEar;
 let Bunnynose;
 let BunnyBody;
+let bgImage;
 
 /* load images here */
 function prepareInteraction() {
-  //bgImage = loadImage('/images/background.png');
+  bgImage = loadImage('/images/Bunny_Background.png');
   leftBunnyEar = loadImage('/images/Left_Bunny_Ear.png');
   rightBunnyEar = loadImage('/images/Right_Bunny_Ear.png');
   Bunnynose = loadImage('/images/Bunny_Nose.png');
@@ -121,6 +122,9 @@ function drawInteraction(faces, hands) {
     let ChinX = face.keypoints[152].x;
     let ChinY = face.keypoints[152].y;
 
+    let bodyXOffset = faceWidth * 1.05;
+    let bodyYOffset = faceheight * 0.9;
+
     /*
     Start drawing on the face here
     */
@@ -152,6 +156,8 @@ function drawInteraction(faces, hands) {
     //drawPoints(face.rightEye);
     //drawPoints(face.rightEyebrow);
 
+    image(BunnyBody, ChinX - bodyXOffset, ChinY - bodyYOffset, faceWidth * 2, faceheight * 2);
+
     fill(0);
     ellipse(lipsCenterX, lipsCenterY / 0.99, lipsWidth, lipsHeight);
 
@@ -160,7 +166,6 @@ function drawInteraction(faces, hands) {
 
     image(Bunnynose,BunnynoseX - noseXOffset,BunnynoseY - noseYOffset,BunnynoseWidth,BunnynoseHeight); // image load for bunny nose
 
-    image(BunnyBody, ChinX, ChinY, faceWidth, faceheight);
 
     //fill(66, 46, 15);
     //ellipse(leftEyebrowCenterX,leftEyebrowCenterY,leftEyebrowWidth,leftEyebrowHeight);
