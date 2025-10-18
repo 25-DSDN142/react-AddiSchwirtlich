@@ -22,8 +22,8 @@
 
 
 // If using video file use these dimentions: 
-// const  CaptureWidth = 1280;
-// const  CaptureHeight = 720;
+//const  CaptureWidth = 1280;
+//const  CaptureHeight = 720;
 
 // const  CaptureWidth = 640;
 // const  CaptureHeight = 360;
@@ -40,7 +40,7 @@ const  CaptureHeight = 960;
 
 // program Mode
 const webCam = true; // set to false to use video
-const videoFile = "FaceandHands.mov" // update this to match the video file you want to load
+const videoFile = "Face_Video.mp4" // update this to match the video file you want to load
 const flipVideo = false; // changes from mirror mode to standard video mode
 
 
